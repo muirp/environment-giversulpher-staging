@@ -1,0 +1,85 @@
+
+Showing logs for build [32mmuirp-environment-giversulpher-jcnnb-3[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-zvcbz[0m
+{"level":"warn","ts":1568300455.7288313,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1568300455.730593,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmuirp-environment-giversulpher-jcnnb-3[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-48s9j[0m
+{"level":"warn","ts":1568300456.5549307,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1568300456.557488,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source /workspace/source/env\""}
+
+Showing logs for build [32mmuirp-environment-giversulpher-jcnnb-3[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmuirp-environment-giversulpher-jcnnb-3[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-muirp-environment-giversulpher-ncfdg[0m
+{"level":"warn","ts":1568300461.7245324,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1568300462.8454597,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/muirp/environment-giversulpher-staging.git @ v0.0.3 in path /workspace/source"}
+
+Showing logs for build [32mmuirp-environment-giversulpher-jcnnb-3[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:ebe96940d53cc0d363582dd2bc71ac90d94a2ff0
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mmuirp-environment-giversulpher-jcnnb-3[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32mmuirp-environment-giversulpher-jcnnb-3[0m stage [32mfrom-build-pack[0m and container [32mstep-build-helm-apply[0m
+Modified file /workspace/source/env/Chart.yaml to set the chart to version 3
+Copying the helm source directory /workspace/source/env to a temporary location for building and applying /tmp/**-helm-apply-253873178/env
+Applying helm chart at /tmp/**-helm-apply-253873178/env as release name ** to namespace **-staging
+Fetching secrets from vault into directory "/tmp/**-helm-apply-253873178/env"
+verifying the helm requirements versions in dir: . using version stream URL:  and git ref: 
+Deleting and cloning the Jenkins X versions repo
+Cloning the Jenkins X versions repo https://github.com/jenkins-x/jenkins-x-versions.git with ref refs/heads/master to /builder/home/.**/jenkins-x-versions
+Ignoring templates/.gitignore
+Wrote chart values.yaml /tmp/**-helm-apply-253873178/env/values.yaml generated from directory tree
+generated helm /tmp/**-helm-apply-253873178/env/values.yaml
+
+PipelineSecrets: {}
+cleanup:
+  Annotations:
+    helm.sh/hook: pre-delete
+    helm.sh/hook-delete-policy: hook-succeeded
+  Args:
+  - --cleanup
+expose:
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+  Args:
+  - --v
+  - 4
+  config:
+    domain: 34.76.26.236.nip.io
+    exposer: Ingress
+    http: "true"
+    tlsacme: "false"
+jenkins:
+  Servers:
+    Global: {}
+prow: {}
+
+Using values files: /tmp/**-helm-apply-253873178/env/values.yaml
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Read credentials for https://storage.googleapis.com/chartmuseum.jenkins-x.io from vault helm/repos
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Read credentials for http://jenkins-x-chartmuseum:8080 from vault helm/repos
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+Applying Apps chart overrides
+Applying chart overrides
+error: upgrading helm chart '.': failed to run 'kubectl apply --recursive -f /tmp/helm-template-workdir-580736523/**/output/namespaces/**-staging -l jenkins.io/chart-release=** --namespace **-staging --wait --validate=false' command in directory '/tmp/**-helm-apply-253873178/env', output: 'role.rbac.authorization.k8s.io/cleanup configured
+rolebinding.rbac.authorization.k8s.io/cleanup configured
+serviceaccount/cleanup configured
+configmap/exposecontroller configured
+role.rbac.authorization.k8s.io/expose configured
+rolebinding.rbac.authorization.k8s.io/expose configured
+serviceaccount/expose configured
+deployment.extensions/**-test-vault-urls configured
+release.jenkins.io/test-vault-urls-0.0.2 configured
+service/test-vault-urls configured
+Error from server (BadRequest): error when creating "/tmp/helm-template-workdir-580736523/**/output/namespaces/**-staging/env/charts/test-vault-urls/templates/part0-secret.yaml": Secret in version "v1" cannot be handled as a Secret: v1.Secret.ObjectMeta: v1.ObjectMeta.TypeMeta: Kind: Data: decode base64: illegal base64 data at input byte 5, error found in #10 byte of ...|:username"},"kind":"|..., bigger context ...|ta":{"username":"vault:mysecrets/secret1:username"},"kind":"Secret","metadata":{"annotations":{"jenk|...'
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-helm-apply'. The execution of the pipeline has stopped.[0m
