@@ -1,0 +1,75 @@
+
+Showing logs for build [32mmuirp-environment-giversulpher-whznj-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-tldh4[0m
+{"level":"warn","ts":1568298206.0871718,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1568298206.0880399,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmuirp-environment-giversulpher-whznj-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-sd5dp[0m
+{"level":"warn","ts":1568298207.0765657,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1568298207.0785463,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source /workspace/source/env\""}
+
+Showing logs for build [32mmuirp-environment-giversulpher-whznj-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmuirp-environment-giversulpher-whznj-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-muirp-environment-giversulpher-r2h5d[0m
+{"level":"warn","ts":1568298213.1510284,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1568298214.2188673,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/muirp/environment-giversulpher-staging.git @ v0.0.1 in path /workspace/source"}
+
+Showing logs for build [32mmuirp-environment-giversulpher-whznj-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:6ff6cb1cb914e5c4f0bb18f055f5b8d6de49dd30
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mmuirp-environment-giversulpher-whznj-1[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+Generated Git credentials file /builder/home/git/credentials
+
+Showing logs for build [32mmuirp-environment-giversulpher-whznj-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-helm-apply[0m
+Modified file /workspace/source/env/Chart.yaml to set the chart to version 1
+Namespace **-staging created 
+Copying the helm source directory /workspace/source/env to a temporary location for building and applying /tmp/**-helm-apply-053318786/env
+Applying helm chart at /tmp/**-helm-apply-053318786/env as release name ** to namespace **-staging
+Fetching secrets from vault into directory "/tmp/**-helm-apply-053318786/env"
+verifying the helm requirements versions in dir: . using version stream URL:  and git ref: 
+Deleting and cloning the Jenkins X versions repo
+Cloning the Jenkins X versions repo https://github.com/jenkins-x/jenkins-x-versions.git with ref refs/heads/master to /builder/home/.**/jenkins-x-versions
+Ignoring templates/.gitignore
+Wrote chart values.yaml /tmp/**-helm-apply-053318786/env/values.yaml generated from directory tree
+generated helm /tmp/**-helm-apply-053318786/env/values.yaml
+
+PipelineSecrets: {}
+cleanup:
+  Annotations:
+    helm.sh/hook: pre-delete
+    helm.sh/hook-delete-policy: hook-succeeded
+  Args:
+  - --cleanup
+expose:
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+  Args:
+  - --v
+  - 4
+  config:
+    domain: 34.76.26.236.nip.io
+    exposer: Ingress
+    http: "true"
+    tlsacme: "false"
+jenkins:
+  Servers:
+    Global: {}
+prow: {}
+
+Using values files: /tmp/**-helm-apply-053318786/env/values.yaml
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Read credentials for https://storage.googleapis.com/chartmuseum.jenkins-x.io from vault helm/repos
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Read credentials for http://jenkins-x-chartmuseum:8080 from vault helm/repos
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+Applying Apps chart overrides
+Applying chart overrides
+
+
